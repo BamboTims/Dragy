@@ -14,10 +14,19 @@ type List = {
 type AppStateContextProps = {
   lists: List[];
   getTasksByListId(id: string): Task[];
+  children?: React.ReactNode;
+};
+
+type AppStateProviderProps = {
+  children?: React.ReactNode;
 };
 
 export type AppState = {
   lists: List[];
+};
+
+export const useAppState = () => {
+  return useContext(AppStateContext);
 };
 
 const appData: AppState = {
@@ -44,7 +53,7 @@ const AppStateContext = createContext<AppStateContextProps>(
   {} as AppStateContextProps
 );
 
-export const AppStateProvider: FC = ({ children }) => {
+export const AppStateProvider: FC<AppStateProviderProps> = ({ children }) => {
   const { lists } = appData;
 
   const getTasksByListId = (id: string) => {
