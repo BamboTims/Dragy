@@ -4,13 +4,14 @@ import { AddNewItem } from "./Components/AddNewItem/AddNewItem";
 import { Column } from "./Components/Column/Column";
 import { useAppState } from "./State/appstatecontext";
 import { addList } from "./State/action";
-import { text } from "stream/consumers";
+import { CustomDragLayer } from "./Components/CustomDragLayer/CustomDragLayer";
 
 function App() {
   const { lists, dispatch } = useAppState();
 
   return (
     <Main>
+      <CustomDragLayer />
       {lists.map((list) => (
         <Column text={list.text} key={list.id} id={list.id} />
       ))}
