@@ -1,4 +1,3 @@
-import React from "react";
 import { Main } from "./styles";
 import { AddNewItem } from "./Components/AddNewItem/AddNewItem";
 import { Column } from "./Components/Column/Column";

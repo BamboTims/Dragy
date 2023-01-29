@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { ColumnContainer, ColumnTitle } from "../../styles";
 import { AddNewItem } from "../AddNewItem/AddNewItem";
 import { useAppState } from "../../State/appstatecontext";
