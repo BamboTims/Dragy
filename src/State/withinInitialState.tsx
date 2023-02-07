@@ -3,7 +3,7 @@ import { AppState } from "./appStateReducer";
 import { load } from "../api/api";
 
 type InjectedProps = {
-  initalState: AppState;
+  initialState: AppState;
 };
 
 type PropsWithoutInjected<TBaseProps> = Omit<TBaseProps, keyof InjectedProps>;
@@ -18,14 +18,14 @@ export function withInitialState<Tprops>(
     });
 
     const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<Error>();
+    const [error, setError] = useState<Error | undefined>();
 
     useEffect(() => {
       const fetchInitialState = async () => {
         try {
           const data = await load();
           setInitialState(data);
-        } catch (e) {
+        } catch (e: any) {
           setError(e);
         }
         setIsLoading(false);
@@ -41,6 +41,6 @@ export function withInitialState<Tprops>(
       return <div>{error.message}</div>;
     }
 
-    return <WrappedComponent {...props} initalState={initialState} />;
+    return <WrappedComponent {...props} initialState={initialState} />;
   };
 }
